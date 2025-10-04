@@ -1,0 +1,83 @@
+#user-list {
+  padding: 4rem;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #280a48, #20043d);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    margin-bottom: 4rem;
+}
+
+#user-list h2 {
+  text-align: center;
+  color: #fff;
+  margin-bottom: 2rem;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+#user-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#user-list li {
+  background-color: #2a0d3c;
+  width: 12rem;
+  text-align: center;
+  padding: 1.5rem 1rem;
+  border-radius: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+#user-list li:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+}
+
+#user-list li img {
+  height: 6rem;
+  width: 6rem;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  margin-bottom: 1rem;
+}
+
+#user-list li h3 {
+  margin: 0.5rem 0;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+#user-list li p {
+  font-size: 0.85rem;
+  color: #ccc;
+  word-wrap: break-word;
+}
+
+li button{
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  background-color: transparent;
+  color: #a18aba;
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+ li button:hover {
+  background-color: #1b082f;
+  color: #ebe7ef;
+}
+
+li button.active {
+  background-color: #7925d3;
+  color: #ebe7ef;
+}
