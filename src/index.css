@@ -14,8 +14,10 @@ code {
 
 main {
   width: 90%;
-  max-width: 50rem;
+  max-width: 70rem;
   margin: auto;
+  min-height:90rem;
+  padding-bottom: 5rem;
 }
 
 
