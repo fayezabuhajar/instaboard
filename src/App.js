@@ -1,55 +1,48 @@
-import { useEffect, useState } from "react";
+import { BrowserRouter as Router, Routes, Route, BrowserRouter } from "react-router-dom";
+import Layout from "./components/Layout.jsx";
+import Home from "./Pages/Home.jsx";
+import About from "./Pages/About.jsx";
+import Team from "./components/Team/Team.jsx";
+import TeamDetails from "./components/TeamDetails/TeamDetails.jsx";
+import NotFound from "./Pages/NotFound.jsx";
 import "./App.css";
-import UserList from "./components/UserList/UserList.jsx";
-import Navbar from "./components/Navbar/Navbar.jsx";
-import axios from "axios";
 
-function App() {
-  const [users, setUsers] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [filteredUsers, setFilteredUsers] = useState([]);
-
-  const handleClickReturnData = async () => {
-    try {
-      const response = await axios.get("https://randomuser.me/api/?results=12");
-      setLoading(false);
-      setUsers(response.data.results);
-      setFilteredUsers(response.data.results);
-    } catch (error) {
-      // toast.error(error || "error fetching data");
-      console.error("Error fetching data:", error);
-      setLoading(false);
-    }
-  };
-
-  const handleSearch = (query) => {
-    const lowerQuery = query.toLowerCase();
-    const filtered = users.filter((user) =>
-      `${user.name.first} ${user.name.last}`.toLowerCase().includes(lowerQuery)
-    );
-    setFilteredUsers(filtered);
-  };
-
-  useEffect(() => {
-    handleClickReturnData();
-  }, []);
-
-  
-
+export default function App() {
   return (
-    <>
-      <header>
-        <Navbar onclick={handleClickReturnData} onSearch={handleSearch} />
-      </header>
-      {loading ? (
-        <div>loading</div>
-      ) : (
-        <main>
-          <UserList users={filteredUsers} />
-        </main>
-      )}
-    </>
+    <BrowserRouter>
+      <Router>
+        <Routes>
+          {/* Pages inside Layout */}
+          <Route
+            path="/"
+            element={
+              <Layout>
+                <Home />
+              </Layout>
+            }
+          />
+          <Route
+            path="/about"
+            element={
+              <Layout>
+                <About />
+              </Layout>
+            }
+          />
+          <Route
+            path="*"
+            element={
+              <Layout>
+                <NotFound />
+              </Layout>
+            }
+          />
+
+          {/* Team pages independent of Layout */}
+          <Route path="/team" element={<Team />} />
+          <Route path="/team/:id" element={<TeamDetails />} />
+        </Routes>
+      </Router>
+    </BrowserRouter>
   );
 }
-
-export default App;
